@@ -1,0 +1,20 @@
+{
+  "recommendations": [
+    "mgmcdermott.vscode-language-babel",
+    "editorconfig.editorconfig",
+    "irongeek.vscode-env",
+    "dbaeumer.vscode-eslint",
+    "file-icons.file-icons",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "unifiedjs.vscode-mdx",
+    "liviuschera.noctis",
+    "esbenp.prettier-vscode",
+    "Prisma.prisma",
+    "svelte.svelte-vscode",
+    "bradlc.vscode-tailwindcss",
+    "gruntfuggly.todo-tree",
+    "Vue.vscode-typescript-vue-plugin",
+    "Vue.volar"
+  ]
+}

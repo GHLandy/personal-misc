@@ -1,0 +1,9 @@
+#
+# ~/.personalrc
+# Load .envrc, .aliasrc and nvm if exists.
+#
+
+[[ -f ~/.envrc ]] && source ~/.envrc
+[[ -f ~/.aliasrc ]] && source ~/.aliasrc
+[[ -s "$NVM_DIR/nvm.sh" ]] && source "$NVM_DIR/nvm.sh"
+[[ -s "$NVM_DIR/bash_completion" ]] && source "$NVM_DIR/bash_completion"
