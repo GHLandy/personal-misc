@@ -3,10 +3,19 @@
   "version": "0.0.0",
   "private": true,
   "description": "Just something miscellaneous for ghlandy personal usage.",
+  "homepage": "https://github.com/GHLandy/personal-misc",
+  "bugs": {
+    "url": "https://github.com/GHLandy/personal-misc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GHLandy/personal-misc.git"
+  },
   "license": "MIT",
   "author": {
     "name": "GHLandy",
-    "email": "liftland953@163.com"
+    "email": "liftland953@163.com",
+    "url": "https://github.com/GHLandy"
   },
   "scripts": {
     "lint": "eslint --fix \"**/*.{js,jsx,cjs,mjs,ts,tsx,ctx,mts,vue}\"",
@@ -27,15 +36,15 @@
     "dayjs": "^1.11.7"
   },
   "devDependencies": {
-    "@ghlandy/eslint-config-prettier": "^0.1.0",
-    "@ghlandy/prettier-config": "^0.5.0",
+    "@ghlandy/eslint-config-prettier": "^0.3.0",
+    "@ghlandy/prettier-config": "^0.7.0",
     "eslint": "^8.41.0",
     "husky": "^8.0.3",
     "lint-staged": "^13.2.2",
-    "prettier": "^2.8.8"
+    "prettier": "^3.1.1"
   },
   "engines": {
-    "node": ">=16",
+    "node": ">=18",
     "pnpm": ">=8"
   }
 }
