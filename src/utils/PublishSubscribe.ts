@@ -2,15 +2,15 @@
  * 发布订阅模式
  */
 export class PublishSubscribe {
-  /** @type {{ [key: string]: ((...args: any[]) => void)[] }} */
-  events = {};
+  /** 监听的事件 */
+  events: { [key: string]: ((...args: any[]) => void)[] } = {};
 
   /**
    * 添加事件监听
-   * @param {string} eventName 事件名称
-   * @param {(...args: any[]) => void} callback 事件回调
+   * @param eventName 事件名称
+   * @param callback 事件回调
    */
-  addEventListener(eventName, callback) {
+  addEventListener(eventName: string, callback: (...args: any[]) => void) {
     if (typeof callback !== 'function') {
       console.warn(`Event::${eventName}, callback need to be function`);
       return;
@@ -25,10 +25,10 @@ export class PublishSubscribe {
 
   /**
    * 移除事件监听
-   * @param {string} eventName 事件名称
-   * @param {(...args: any[]) => void} callback 事件回调
+   * @param eventName 事件名称
+   * @param callback 事件回调
    */
-  removeEventListener(eventName, callback) {
+  removeEventListener(eventName: string, callback: (...args: any[]) => void) {
     if (!this.events[eventName]) {
       console.warn(`Event::${eventName}, not registered`);
       return;
@@ -47,10 +47,10 @@ export class PublishSubscribe {
 
   /**
    * 触发事件
-   * @param {string} eventName 事件名称
-   * @param  {any[]} args 传给事件回调的参数
+   * @param eventName 事件名称
+   * @param args 传给事件回调的参数
    */
-  dispatchEvent(eventName, ...args) {
+  dispatchEvent(eventName: string, ...args: any[]) {
     if (!this.events[eventName]) {
       console.warn(`Event::${eventName}, not registered`);
       return;
