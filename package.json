@@ -29,11 +29,13 @@
     ]
   },
   "dependencies": {
+    "crypto-js": "^4.2.0",
     "dayjs": "^1.11.7"
   },
   "devDependencies": {
     "@ghlandy/eslint-config-prettier": "^0.3.0",
     "@ghlandy/prettier-config": "^0.7.0",
+    "@types/crypto-js": "^4.2.2",
     "eslint": "^8.41.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",

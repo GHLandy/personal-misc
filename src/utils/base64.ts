@@ -10,18 +10,16 @@ import CryptoJS from 'crypto-js';
 
 /**
  * 字符串编码为 Base64
- * @param {string} str 原始字符串
- * @returns {string}
+ * @param str 原始字符串
  */
-export function encodeBase64(str) {
+export function encodeBase64(str: string): string {
   return CryptoJS.enc.Base64.stringify(CryptoJS.enc.Utf8.parse(str));
 }
 
 /**
  * 解析 Base64 字符为原始字符
- * @param {string} str Base64 字符
- * @returns {string}
+ * @param str Base64 字符
  */
-export function decodeBase64(str) {
+export function decodeBase64(str: string): string {
   return CryptoJS.enc.Base64.parse(str).toString(CryptoJS.enc.Utf8);
 }

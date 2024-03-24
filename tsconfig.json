@@ -6,6 +6,7 @@
     "checkJs": true,
     "allowJs": true,
     "lib": ["ES2015", "DOM", "DOM.Iterable"],
+    "esModuleInterop": true,
     "experimentalDecorators": true
   },
   "exclude": ["**/node_modules/**", "**/dist/**"],
