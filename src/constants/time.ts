@@ -25,8 +25,5 @@ export const DateFormatStr = 'YYYY-MM-DD';
 /** dayjs 时间格式，形如 08:10:00 */
 export const TimeFormatStr = 'HH:mm:ss';
 
-/**
- * dayjs 日期时间格式，形如 2022-12-26 08:10:00
- * @type {'YYYY-MM-DD HH:mm:ss'}
- */
+/** dayjs 日期时间格式，形如 2022-12-26 08:10:00 */
 export const DateTimeFormatStr = `${DateFormatStr} ${TimeFormatStr}`;
