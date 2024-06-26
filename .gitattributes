@@ -1,0 +1,5 @@
+# https://docs.github.com/cn/get-started/getting-started-with-git/configuring-git-to-handle-line-endings
+
+* text=auto eol=lf
+
+*.{ico,png,jpg,jpeg,gif,webp,svg,woff,woff2} binary

@@ -1,0 +1,7 @@
+dist
+dist-ssr
+node_modules
+.cache
+.husky
+.webpack
+out

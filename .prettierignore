@@ -1,0 +1,9 @@
+dist
+dist-ssr
+node_modules
+pnpm-lock.yaml
+.cache
+.husky
+.webpack
+out
+**/*iconfont*

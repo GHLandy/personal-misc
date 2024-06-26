@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+RC_FILES=(
+  ".aliasrc"
+  ".envrc"
+  ".gitconfig"
+  ".huskyrc"
+  ".npmrc"
+)
+
+RC_DIR=$(dirname $0)
+
+for rc in ${RC_FILES[*]}; do
+  /usr/bin/cp -f $RC_DIR/$rc ~
+  echo "restore $rc to ~/$rc"
+done
