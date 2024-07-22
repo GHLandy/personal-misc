@@ -1,10 +1,16 @@
 dist
 dist-ssr
+dist-electron
 node_modules
 .cache
 .husky/_
 .webpack
 out
+
+*.rar
+*.zip
+*.7z
+*.local
 
 # Editor directories and files
 .idea
@@ -27,11 +33,6 @@ out
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# System Files
-.directory
-.DS_Store
-Thumbs.db
-
 # Logs
 logs
 *.log
@@ -41,11 +42,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# System Files
+.directory
+.DS_Store
+Thumbs.db
+
 # Tests
 /coverage
 /.nyc_output
-
-*.rar
-*.zip
-*.7z
-*.local
