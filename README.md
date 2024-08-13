@@ -77,3 +77,13 @@ https://mi.nurluq.vip/liebiao/DFAD12A48990F5F6
 
 https://kms.cx/
 https://www.moerats.com/kms/
+
+## Google 浏览器下载
+
+exe 下载地址：
+
+https://www.google.com/chrome/?standalone=1&platform=win64
+
+deb 包下载地址：
+
+https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
