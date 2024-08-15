@@ -4,6 +4,10 @@
 
 ## fnm
 
+linux 安装 `fnm`
+
+下载 https://github.com/Schniz/fnm/releases/download/v1.37.1/fnm-linux.zip 解压到 `$HOME/.local/fnm/` 下，并添加到 `$PATH`
+
 windows 安装 `fnm`
 
 ```bash
