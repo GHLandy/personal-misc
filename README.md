@@ -101,3 +101,7 @@ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/Clash.Verge_1.3.8_x64-setup.exe
 
 https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.deb
+
+## VS Code
+
+https://code.visualstudio.com/api/get-started/your-first-extension
