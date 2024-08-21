@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
 RC_FILES=(
-  ".aliasrc"
   ".envrc"
   ".gitconfig"
   ".huskyrc"

@@ -1,9 +1,0 @@
-#!/usr/bin/env bash
-
-# [[ -f $HOME/.aliasrc ]] && source $HOME/.aliasrc
-
-alias diff='diff --color=auto'
-alias ls='ls --color --group-directories-first'
-alias ll='ls -lh'
-alias vi='vim'
-alias pn='pnpm'
