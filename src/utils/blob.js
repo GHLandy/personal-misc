@@ -1,6 +1,6 @@
 /**
  * Blob 读取为 ArrayBuffer
- * @param {Blob} blob 需要读取的东西
+ * @param {Blob | File} blob
  * @returns {Promise<ArrayBuffer>}
  */
 export function readAsArrayBuffer(blob) {
@@ -13,7 +13,7 @@ export function readAsArrayBuffer(blob) {
 
 /**
  * Blob 读取为 ArrayBuffer
- * @param {Blob} blob 需要读取的东西
+ * @param {Blob | File} blob
  * @returns {Promise<string>}
  */
 export function readAsDataURL(blob) {
@@ -26,7 +26,7 @@ export function readAsDataURL(blob) {
 
 /**
  * Blob 读取为 Text
- * @param {Blob} blob 需要读取的东西
+ * @param {Blob | File} blob
  * @returns {Promise<string>}
  */
 export function readAsText(blob) {
