@@ -91,32 +91,6 @@ export function fileToDataURL(file) {
 }
 
 /**
- * 读取为 Text
- * @param {any} something 需要读取的东西
- * @returns {Promise<string>}
- */
-export function readAsText(something) {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => resolve(e.target.result);
-    reader.readAsText(something);
-  });
-}
-
-/**
- * 读取为 ArrayBuffer
- * @param {any} something 需要读取的东西
- * @returns {Promise<ArrayBuffer>}
- */
-export function readAsArrayBuffer(something) {
-  return new Promise((resolve) => {
-    const reader = new FileReader();
-    reader.onload = (e) => resolve(e.target.result);
-    reader.readAsArrayBuffer(something);
-  });
-}
-
-/**
  * 文件转为字节数组 (其他语言的 Byte[] 类型)
  * @param {File} file input 框获得的 File 对象
  * @returns {Promise<number[]>}
