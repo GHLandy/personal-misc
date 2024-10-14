@@ -88,8 +88,6 @@ exe 下载地址：
 
 https://www.google.com/chrome/?standalone=1&platform=win64
 
-https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={81CDF040-C0AD-52A1-73E3-606850A81740}&lang=zh-CN&browser=4&usagestats=0&appname=Google Chrome&needsadmin=prefers&ap=x64-statsdef_1&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
-
 https://dl.google.com/tag/s/lang=zh-CN&browser=4&appname=Google Chrome&needsadmin=prefers&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
 
 deb 包下载地址：
