@@ -38,7 +38,7 @@
   "update.enableWindowsBackgroundUpdates": false,
   "update.mode": "none",
   "window.titleBarStyle": "custom",
-  "window.zoomLevel": 0.5,
+  "window.zoomLevel": 1.5,
   "workbench.colorTheme": "Noctis",
   "workbench.iconTheme": "file-icons",
   "workbench.sideBar.location": "left"
