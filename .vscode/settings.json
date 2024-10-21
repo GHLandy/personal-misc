@@ -40,6 +40,6 @@
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 1.5,
   "workbench.colorTheme": "Noctis",
-  "workbench.iconTheme": "file-icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left"
 }
