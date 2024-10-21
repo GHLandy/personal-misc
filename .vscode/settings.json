@@ -22,7 +22,7 @@
     "strings": true
   },
   "editor.renderWhitespace": "all",
-  "editor.rulers": [80, 100],
+  "editor.rulers": [80, 100, 120],
   "editor.tabSize": 2,
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 100,
@@ -34,7 +34,7 @@
   "git.suggestSmartCommit": false,
   "svelte.enable-ts-plugin": true,
   "terminal.integrated.defaultProfile.windows": "Git Bash",
-  "terminal.integrated.defaultProfile.linux": "zsh",
+  "terminal.integrated.defaultProfile.linux": "bash",
   "update.enableWindowsBackgroundUpdates": false,
   "update.mode": "none",
   "window.titleBarStyle": "custom",
