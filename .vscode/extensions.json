@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "mgmcdermott.vscode-language-babel",
+    "editorconfig.editorconfig",
+    "irongeek.vscode-env",
+    "dbaeumer.vscode-eslint",
+    "mhutchie.git-graph",
+    "eamodio.gitlens",
+    "unifiedjs.vscode-mdx",
+    "liviuschera.noctis",
+    "esbenp.prettier-vscode",
+    "PKief.material-icon-theme",
+    "bradlc.vscode-tailwindcss",
+    "gruntfuggly.todo-tree",
+    "raynigon.nginx-formatter",
+    "Vue.volar"
+  ]
+}

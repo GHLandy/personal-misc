@@ -1,0 +1,13 @@
+[user]
+  name = GHLandy
+  email = liftland953@163.com
+[core]
+  autocrlf = input
+  editor = vim
+  quotePath = false
+[pull]
+  ff = only
+[init]
+  defaultBranch = master
+[gui]
+  encoding = utf-8

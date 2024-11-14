@@ -1,0 +1,13 @@
+ThemeFile=flat-ui
+Transparency=medium
+Columns=110
+Rows=36
+FontHeight=12
+Locale=zh_CN
+Charset=UTF-8
+Language=zh_CN
+CursorType=block
+BellType=1
+BellFlash=no
+Term=xterm-256color
+Font=Lucida Console

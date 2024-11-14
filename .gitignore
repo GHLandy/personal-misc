@@ -1,0 +1,52 @@
+dist
+dist-ssr
+dist-electron
+node_modules
+.cache
+.husky/_
+.webpack
+out
+
+*.rar
+*.zip
+*.7z
+*.local
+
+# Editor directories and files
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+lerna-debug.log*
+
+# System Files
+.directory
+.DS_Store
+Thumbs.db
+
+# Tests
+/coverage
+/.nyc_output
