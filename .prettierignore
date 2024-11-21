@@ -1,9 +1,13 @@
 dist
 dist-ssr
 node_modules
+package-lock.json
 pnpm-lock.yaml
 .cache
 .husky
 .webpack
 out
 **/*iconfont*
+**/*.min.js
+**/*.min.css
+**/*.map
