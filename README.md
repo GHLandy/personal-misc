@@ -10,13 +10,14 @@ linux 安装 `fnm`
 
 windows 安装 `fnm`
 
-下载 `https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-windows.zip` 解压到 `D:\.fnm\`, 将该路径添加到 `PATH`
+下载 `https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-windows.zip` 解压到 `D:\Tools\fnm\`, 将该路径添加到 `PATH`
 
 设置 PowerShell 的配置文件
 
 ```ps1
 # code 为安装 vs code 之后的命令行打开方式
-# $PROFILE 为 PowerShell 的配置文件，默认为 C:\Users\<USER>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
+# $PROFILE 为 PowerShell 的配置文件
+# 默认为 C:\Users\<USER>\Documents\WindowsPowerShell\Microsoft.PowerShell_profile.ps1
 code $PROFILE
 
 # 添加配置
@@ -45,31 +46,6 @@ fnm install 20
 eval "$(fnm env --use-on-cd --shell bash)"
 ```
 
-## Windows 经典右键菜单
-
-```ps1
-reg add "HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32" /f
-```
-
-或保存 .reg 文件后双击打开
-
-```reg
-Windows Registry Editor Version 5.00
-
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
-@=""
-```
-
-重启资源管理器
-
-如果需要恢复：
-
-```reg
-Windows Registry Editor Version 5.00
-
-[-HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}]
-```
-
 ## Windows
 
 获取系统版本信息 start msinfo32
@@ -94,6 +70,23 @@ https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
 rpm 包下载地址：
 
 https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
+
+## Windows 右键菜单
+
+```reg
+Windows Registry Editor Version 5.00
+
+<!-- Windows 经典右键菜单，需要重启资源管理器 -->
+[HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
+@=""
+
+<!-- 搜狗: 彻底粉碎文件、清理大文件/重复文件、彻底粉碎回收站内文件 -->
+[-HKEY_CLASSES_ROOT\*\ShellEx\ContextMenuHandlers\    sgshellext]
+[-HKEY_CLASSES_ROOT\Directory\Background\ShellEx\ContextMenuHandlers\    sgshellext2]
+[-HKEY_CLASSES_ROOT\Directory\ShellEx\ContextMenuHandlers\    sgshellext]
+[-HKEY_CLASSES_ROOT\Drive\ShellEx\ContextMenuHandlers\    sgshellext]
+[-HKEY_CLASSES_ROOT\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\shellex\ContextMenuHandlers\    sgshellext2]
+```
 
 ## Clash Verge
 

@@ -6,13 +6,15 @@
     "dbaeumer.vscode-eslint",
     "mhutchie.git-graph",
     "eamodio.gitlens",
-    "unifiedjs.vscode-mdx",
-    "liviuschera.noctis",
-    "esbenp.prettier-vscode",
     "PKief.material-icon-theme",
+    "unifiedjs.vscode-mdx",
+    "raynigon.nginx-formatter",
+    "liviuschera.noctis",
+    "jebbs.plantuml",
+    "esbenp.prettier-vscode",
+    "jebbs.plantuml",
     "bradlc.vscode-tailwindcss",
     "gruntfuggly.todo-tree",
-    "raynigon.nginx-formatter",
     "Vue.volar"
   ]
 }
