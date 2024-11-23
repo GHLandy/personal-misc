@@ -1,5 +1,4 @@
 /**
- * func
  * @param {string} prams
  */
 export function func(prams) {
