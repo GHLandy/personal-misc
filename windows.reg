@@ -5,10 +5,3 @@ Windows Registry Editor Version 5.00
 @=""<!-- Windows 经典右键菜单 -->
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
 @=""
-
-<!-- 搜狗: 彻底粉碎文件、清理大文件/重复文件、彻底粉碎回收站内文件 -->
-[-HKEY_CLASSES_ROOT\*\ShellEx\ContextMenuHandlers\    sgshellext]
-[-HKEY_CLASSES_ROOT\Directory\Background\ShellEx\ContextMenuHandlers\    sgshellext2]
-[-HKEY_CLASSES_ROOT\Directory\ShellEx\ContextMenuHandlers\    sgshellext]
-[-HKEY_CLASSES_ROOT\Drive\ShellEx\ContextMenuHandlers\    sgshellext]
-[-HKEY_CLASSES_ROOT\CLSID\{645FF040-5081-101B-9F08-00AA002F954E}\shellex\ContextMenuHandlers\    sgshellext2]
