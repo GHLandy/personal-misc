@@ -2,11 +2,12 @@
 # ~/.bashrc
 #
 
+[[ -f $HOME/.envrc ]] && source $HOME/.envrc
+
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-# [[ -f /mingw64/share/git/completion/git-prompt.sh ]] && . /mingw64/share/git/completion/git-prompt.sh
-[[ -f /usr/share/git/completion/git-prompt.sh ]] && . /usr/share/git/completion/git-prompt.sh
-[[ -f ~/.aliasrc ]] && . ~/.aliasrc
+[[ -f /mingw64/share/git/completion/git-prompt.sh ]] && . /mingw64/share/git/completion/git-prompt.sh
+# [[ -f /usr/share/git/completion/git-prompt.sh ]] && . /usr/share/git/completion/git-prompt.sh
 
 eval "$(fnm env --use-on-cd)"
 

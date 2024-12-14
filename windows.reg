@@ -2,6 +2,4 @@ Windows Registry Editor Version 5.00
 
 <!-- Windows 经典右键菜单 -->
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
-@=""<!-- Windows 经典右键菜单 -->
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
 @=""
