@@ -48,20 +48,15 @@ eval "$(fnm env --use-on-cd --shell bash)"
 
 ## Windows
 
-获取系统版本信息 start msinfo32
-
-启动密钥输入框 start slui 3
-
-https://mi.nurluq.vip/liebiao/DFAD12A48990F5F6
+系统版本信息 start msinfo32
 
 https://kms.cx/
-https://www.moerats.com/kms/
 
 ## Google 浏览器下载
 
 exe 下载地址：https://www.google.com/chrome/?standalone=1&platform=win64
 
-https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={0DD4F5ED-D5CE-EAF4-B4F2-ECBD2010EBE5}&lang=zh-CN&browser=4&usagestats=1&appname=Google%20Chrome&needsadmin=prefers&ap=x64-statsdef_1&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
+https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C064B35C-3E24-8615-6F62-27B06F318835}&lang=zh-CN&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=prefers&ap=x64-statsdef_1&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
 
 deb 包下载地址：
 
