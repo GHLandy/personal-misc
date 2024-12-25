@@ -6,11 +6,11 @@
 
 linux 安装 `fnm`
 
-下载 https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-linux.zip 解压到 `$HOME/.local/fnm/` 下，并添加到 `$PATH`
+下载 https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-linux.zip 解压到 `$HOME/.local/fnm/` 下，并添加到 `$PATH`
 
 windows 安装 `fnm`
 
-下载 `https://github.com/Schniz/fnm/releases/download/v1.37.2/fnm-windows.zip` 解压到 `D:\Tools\fnm\`, 将该路径添加到 `PATH`
+下载 https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-windows.zip 解压到 `D:\Tools\fnm\`, 将该路径添加到 `PATH`
 
 设置 PowerShell 的配置文件
 
@@ -46,11 +46,24 @@ fnm install 20
 eval "$(fnm env --use-on-cd --shell bash)"
 ```
 
-## Windows
+## node-gyp
 
-系统版本信息 start msinfo32
+node-gyp 在 windows 需要的编译环境
 
-https://kms.cx/
+1. python 环境
+
+https://www.python.org/downloads/ 下载个 3.12 版本来安装即可
+
+2. C++ 环境
+
+https://visualstudio.microsoft.com/zh-hans/downloads/ 安装 Visual Studio 2022 社区版即可
+
+运行安装后的 Visual Studio Installer 勾选单个组件:
+
+- 适用于 v143 生成工具的 C++ ATL (x86 和 x64)
+- MSBuild
+- C# 和 Visual Basic Roslyn 编译器 (注: 勾选 MSBuild 后自动勾选的)
+- MSVC v143 - VS 2022 C++ x64/x86 生成工具(最新)
 
 ## Google 浏览器下载
 
@@ -66,7 +79,11 @@ rpm 包下载地址：
 
 https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 
-## Windows 右键菜单
+## Windows
+
+系统版本信息 start msinfo32
+
+https://kms.cx/
 
 ```reg
 Windows Registry Editor Version 5.00
