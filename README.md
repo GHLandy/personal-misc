@@ -61,8 +61,6 @@ https://visualstudio.microsoft.com/zh-hans/downloads/ 安装 Visual Studio 2022 
 运行安装后的 Visual Studio Installer 勾选单个组件:
 
 - 适用于 v143 生成工具的 C++ ATL (x86 和 x64)
-- MSBuild
-- C# 和 Visual Basic Roslyn 编译器 (注: 勾选 MSBuild 后自动勾选的)
 - MSVC v143 - VS 2022 C++ x64/x86 生成工具(最新)
 
 ## Google 浏览器下载
@@ -99,13 +97,31 @@ https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/Clash.Verge_1.3.
 
 https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.8_amd64.deb
 
+## 环境变量
+
+- `JAVA_HOME‌` JDK 目录
+
+  具体看下载 JDK 后解压到哪个目录，比如 `$HOME/jdk17.0.12_7`，一般把 `$JAVA_HOME/bin` 添加到 `PATH`
+
+- `ANDROID_HOME‌` Android SDK 目录
+
+  具体看 Android SDK 下载时自己选择放在哪个目录就设置哪个目录，比如 `$HOME/Android/Sdk`，一般把 `$ANDROID_HOME/tools`、`$ANDROID_HOME/platform-tools` 添加到 `PATH`
+
+- `GRADLE_USER_HOME‌` Gradle 全局配置和缓存目录
+
+  默认是 `$HOME/.gradle`，可根据自己需要调整位置
+
+- `GOPATH` 一般是 `$HOME/go`
+
+- `GO111MOGULE` 一般是 `on`
+
 ## HBuilderX
 
 windows 配置路径 `%APPDATA%/HBuilder X/user/settings.json`
 
 ```json
 {
-  "editor.colorScheme": "Atom One Dark",
+  "editor.colorScheme": "Default",
   "editor.fontSize": 13,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
@@ -118,60 +134,6 @@ windows 配置路径 `%APPDATA%/HBuilder X/user/settings.json`
   "explorer.fontSize": "14",
   "software.update.settings": "manual",
   "terminal.type": "内置终端",
-  "theme-custom.updatetime": "2023-03-23",
-  "workbench.colorCustomizations": {
-    "[Atom One Dark]": {
-      "console.background": "",
-      "editor.background": "#002B36",
-      "editor.caretLine": "#274642",
-      "editor.foldMarker.collapsed.background": "#2AA19899",
-      "editor.foldMarker.expanded.background": "#2AA19899",
-      "editor.foldMarker.expanded.foreground": "#002B36",
-      "editor.linenumber": "#949494",
-      "editor.selection": "#274642",
-      "editor.unactive_selection.background": "",
-      "editor.whitespace": "#002B36",
-      "editorGroup.border": "#00212B",
-      "editorGroupHeader.tabsBackground": "#004052",
-      "editorSuggestWidget.background": "#00212B",
-      "editorSuggestWidget.border": "#002B36",
-      "editorSuggestWidget.selectedBackground": "#002B36",
-      "extensionButton.prominentBackground": "#002B36",
-      "extensionButton.prominentHoverBackground": "#002B36",
-      "imageview.background": "#002B36",
-      "imageview.foreground": "#002B36",
-      "input.background": "#002B36",
-      "inputList.hoverBackground": "#002B36",
-      "inputOption.activeBorder": "#2AA19899",
-      "inputValidation.infoBackground": "#00212B",
-      "list.activeSelectionBackground": "#005A6F",
-      "list.highlightForeground": "#1ebcc5",
-      "list.hoverBackground": "#002B36",
-      "minimap.handle.background": "#00212B",
-      "notifications.background": "#00212B",
-      "notifications.border": "#00212B",
-      "outlineBackground": "#002B36",
-      "scrollbarSlider.background": "#2AA19899",
-      "scrollbarSlider.hoverBackground": "#2AA19899",
-      "settings.dropdownBackground": "#003847",
-      "settings.dropdownBorder": "#003847",
-      "settings.textInputBackground": "#003847",
-      "settings.textInputBorder": "#003847",
-      "sideBar.background": "#00212B",
-      "statusBar.background": "#00212B",
-      "statusBar.foreground": "#93A1A1",
-      "tab.activeBackground": "#002B37",
-      "tab.border": "#003847",
-      "tab.hoverBackground": "#004454",
-      "tab.inactiveBackground": "#004052",
-      "tab.inactiveForeground": "#93A1A1",
-      "tab.unfocusedHoverBackground": "",
-      "terminal.background": "",
-      "titleBar.activeBackground": "#002C39",
-      "toolBar.background": "#002B36",
-      "toolBar.border": "#004052",
-      "toolBar.hoverBackground": "#004052"
-    }
-  }
+  "theme-custom.updatetime": "2023-03-23"
 }
 ```
