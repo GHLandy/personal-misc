@@ -13,8 +13,10 @@
     "jebbs.plantuml",
     "esbenp.prettier-vscode",
     "SimonSiefke.svg-preview",
+    "SimonSiefke.svg-preview",
     "bradlc.vscode-tailwindcss",
     "gruntfuggly.todo-tree",
+    "uni-helper.uni-helper-vscode",
     "Vue.volar"
   ]
 }
