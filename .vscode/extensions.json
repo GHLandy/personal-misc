@@ -1,8 +1,8 @@
 {
   "recommendations": [
     "mgmcdermott.vscode-language-babel",
+    "mikestead.dotenv",
     "editorconfig.editorconfig",
-    "irongeek.vscode-env",
     "dbaeumer.vscode-eslint",
     "mhutchie.git-graph",
     "eamodio.gitlens",
