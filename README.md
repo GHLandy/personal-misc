@@ -89,6 +89,23 @@ Windows Registry Editor Version 5.00
 <!-- Windows 经典右键菜单，需要重启资源管理器 -->
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
 @=""
+
+<!-- 微软拼音 -->
+[HKEY_CURRENT_USER\Software\Microsoft\InputMethod\CandidateWindow\CHS\1]
+"EnableFixedCandidateCountMode"=dword:00000001
+"MaxCandidates"=dword:00000005
+"FontStyleTSF3"="16.00pt;Regular;;Microsoft YaHei UI"
+
+[HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS]
+"Enable Cloud Candidate"=dword:00000000
+"Enable Dynamic Candidate Ranking"=dword:00000001
+"EnableExtraDomainType"=dword:00000001
+"Enable self-learning"=dword:00000001
+"EnableSmartSelfLearning"=dword:00000001
+"EnableLiveSticker"=dword:00000000
+"Enable EUDP"=dword:00000001
+"Default Mode"=dword:00000001
+
 ```
 
 ## Clash Verge
