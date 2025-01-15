@@ -56,12 +56,16 @@ https://www.python.org/downloads/ 下载个 3.12 版本来安装即可
 
 2. C++ 环境
 
-https://visualstudio.microsoft.com/zh-hans/downloads/ 安装 Visual Studio 2022 社区版即可
+安装 VS IDE 或者 VS 生成工具:
+
+- Visual Studio 2022 社区版 https://visualstudio.microsoft.com/zh-hans/downloads/
+- Visual Studio 2022 生成工具 https://visualstudio.microsoft.com/zh-hans/downloads/#build-tools-for-visual-studio-2022
 
 运行安装后的 Visual Studio Installer 勾选单个组件:
 
 - 适用于 v143 生成工具的 C++ ATL (x86 和 x64)
 - MSVC v143 - VS 2022 C++ x64/x86 生成工具(最新)
+- Windows 11 SDK (10.0.26100.0)
 
 ## Google 浏览器下载
 
