@@ -2,4 +2,4 @@
 
 * text=auto eol=lf
 
-*.{ico,png,jpg,jpeg,gif,webp,svg,woff,woff2} binary
+*.{ico,png,jpg,jpeg,gif,webp,woff,woff2} binary

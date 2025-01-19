@@ -7,6 +7,8 @@ pnpm-lock.yaml
 .husky
 .webpack
 out
+auto-imports.d.ts
+components.d.ts
 **/*iconfont*
 **/*.min.js
 **/*.min.css
