@@ -17,6 +17,7 @@ if [[ $MSYSTEM ]]; then
   BASH_FILES=(
     ".bash_profile"
     ".bashrc"
+    ".minttyrc"
   )
 
   for rc in ${BASH_FILES[*]}; do
