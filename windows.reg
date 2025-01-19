@@ -1,10 +1,8 @@
 Windows Registry Editor Version 5.00
 
-<!-- Windows 经典右键菜单 -->
 [HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
 @=""
 
-<!-- 微软拼音 -->
 [HKEY_CURRENT_USER\Software\Microsoft\InputMethod\CandidateWindow\CHS\1]
 "EnableFixedCandidateCountMode"=dword:00000001
 "MaxCandidates"=dword:00000005
@@ -19,3 +17,7 @@ Windows Registry Editor Version 5.00
 "EnableLiveSticker"=dword:00000000
 "Enable EUDP"=dword:00000001
 "Default Mode"=dword:00000001
+
+; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
+; @="CLSID_MSGraphHomeFolder"
+[-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
