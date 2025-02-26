@@ -28,6 +28,21 @@ export const HeaderFileExtensionMap = {
 };
 
 /**
+ * base64 数据转为 Blob
+ * @param {string} base64Str 不带格式化的，形如 UEsDBBQAAAgIAIl4Wlo5hm/
+ */
+export function base64ToBlob(base64Str, mime) {
+  const bstr = atob(base64Str);
+  let n = bstr.length;
+  const u8arr = new Uint8Array(n);
+  while (n--) {
+    u8arr[n] = bstr.charCodeAt(n);
+  }
+
+  return new Blob([u8arr], { type: mime ?? '' });
+}
+
+/**
  * DataURL 转 Blob 或 File
  * @param {string} dataURL 带格式，形如 data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAA
  * @param {string} [fileName] 文件名
