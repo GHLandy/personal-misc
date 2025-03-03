@@ -56,10 +56,8 @@
   "editor.wordWrap": "bounded",
   "editor.wordWrapColumn": 120,
   "explorer.confirmDragAndDrop": false,
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
   "files.eol": "\n",
+  "git.openRepositoryInParentFolders": "never",
   "git.suggestSmartCommit": false,
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.defaultProfile.linux": "zsh",
