@@ -45,6 +45,7 @@
   "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
   "editor.fontSize": 14,
   "editor.formatOnSave": true,
+  "editor.guides.bracketPairs": "active",
   "editor.guides.indentation": true,
   "editor.multiCursorModifier": "alt",
   "editor.quickSuggestions": {
