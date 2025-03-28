@@ -2,10 +2,13 @@ dist
 dist-ssr
 dist-electron
 node_modules
+out
 .cache
 .husky/_
 .webpack
-out
+
+**/**/.vitepress/cache
+**/**/.vitepress/dist
 
 *.rar
 *.zip
