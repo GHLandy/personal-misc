@@ -18,6 +18,7 @@ Windows Registry Editor Version 5.00
 "Enable EUDP"=dword:00000001
 "Default Mode"=dword:00000001
 
-; [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
-; @="CLSID_MSGraphHomeFolder"
 [-HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Desktop\NameSpace\{f874310e-b6b7-47dc-bc84-b9e6b38f5903}]
+
+[HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Google\Update]
+"UpdateDefault"=dword:00000000
