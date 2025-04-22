@@ -1,5 +1,5 @@
 // 定义事件处理函数的类型
-type EventHandler = (...args: any[]) => void; // eslint-disable-line
+type EventHandler = (...args: unknown[]) => void;
 
 /**
  * 发布订阅管理类
@@ -73,8 +73,7 @@ export class PublishSubscribeManager {
    * @param eventName 事件名称
    * @param args 传递给处理函数的参数
    */
-  // eslint-disable-next-line
-  publish(eventName: string, ...args: any[]): void {
+  publish(eventName: string, ...args: unknown[]): void {
     if (!this.events.has(eventName)) return;
 
     const handlers = this.events.get(eventName)!;
