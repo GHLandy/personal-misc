@@ -18,6 +18,8 @@
     "url": "https://github.com/GHLandy"
   },
   "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
     "lint": "eslint --fix \"**/*.{js,jsx,cjs,mjs,ts,tsx,ctx,mts,vue}\"",
     "prepare": "husky",
     "prettier": "prettier -c -w .",
