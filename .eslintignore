@@ -1,0 +1,15 @@
+dist
+dist-ssr
+node_modules
+package-lock.json
+pnpm-lock.yaml
+.cache
+.husky
+.webpack
+out
+auto-imports.d.ts
+components.d.ts
+**/*iconfont*
+**/*.min.js
+**/*.min.css
+**/*.map

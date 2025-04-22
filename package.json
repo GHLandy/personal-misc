@@ -33,14 +33,18 @@
     "dayjs": "^1.11.13"
   },
   "devDependencies": {
+    "@eslint/js": "^9.25.1",
     "@types/crypto-js": "^4.2.2",
+    "eslint": "^9.25.1",
+    "globals": "^16.0.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "^3.5.3",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-packagejson": "^2.5.10",
     "tsx": "^4.19.3",
-    "typescript": "^5.8.2"
+    "typescript": "^5.8.2",
+    "typescript-eslint": "^8.31.0"
   },
   "engines": {
     "node": ">=20",
