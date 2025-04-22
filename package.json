@@ -21,7 +21,7 @@
     "lint": "eslint --fix \"**/*.{js,jsx,cjs,mjs,ts,tsx,ctx,mts,vue}\"",
     "prepare": "husky",
     "prettier": "prettier -c -w .",
-    "tsx": "tsx playground/index.ts"
+    "tsx": "tsx ts/index.ts"
   },
   "lint-staged": {
     "**/*.{js,jsx,cjs,mjs,ts,tsx,ctx,mts,vue,html,css,less,sass,scss,json,md,mdx}": [
