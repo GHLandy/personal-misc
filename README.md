@@ -71,7 +71,7 @@ https://www.python.org/downloads/ 下载个 3.12 版本来安装即可
 
 exe 下载地址：https://www.google.com/chrome/?standalone=1&platform=win64
 
-https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={C064B35C-3E24-8615-6F62-27B06F318835}&lang=zh-CN&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=prefers&ap=x64-statsdef_1&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
+https://dl.google.com/tag/s/appguid={8A69D345-D564-463C-AFF1-A69D9E530F96}&iid={D7EBF260-56DE-B258-5E69-EA6E1A49461B}&lang=zh-CN&browser=4&usagestats=0&appname=Google%20Chrome&needsadmin=prefers&ap=x64-statsdef_1&installdataindex=empty/chrome/install/ChromeStandaloneSetup64.exe
 
 deb 包下载地址：
 
@@ -86,31 +86,6 @@ https://dl.google.com/linux/direct/google-chrome-stable_current_x86_64.rpm
 系统版本信息 start msinfo32
 
 https://kms.cx/
-
-```reg
-Windows Registry Editor Version 5.00
-
-<!-- Windows 经典右键菜单，需要重启资源管理器 -->
-[HKEY_CURRENT_USER\Software\Classes\CLSID\{86CA1AA0-34AA-4E8B-A509-50C905BAE2A2}\InprocServer32]
-@=""
-
-<!-- 微软拼音 -->
-[HKEY_CURRENT_USER\Software\Microsoft\InputMethod\CandidateWindow\CHS\1]
-"EnableFixedCandidateCountMode"=dword:00000001
-"MaxCandidates"=dword:00000005
-"FontStyleTSF3"="16.00pt;Regular;;Microsoft YaHei UI"
-
-[HKEY_CURRENT_USER\Software\Microsoft\InputMethod\Settings\CHS]
-"Enable Cloud Candidate"=dword:00000000
-"Enable Dynamic Candidate Ranking"=dword:00000001
-"EnableExtraDomainType"=dword:00000001
-"Enable self-learning"=dword:00000001
-"EnableSmartSelfLearning"=dword:00000001
-"EnableLiveSticker"=dword:00000000
-"Enable EUDP"=dword:00000001
-"Default Mode"=dword:00000001
-
-```
 
 ## Clash Verge
 
@@ -130,9 +105,9 @@ https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.
 
 - `GRADLE_USER_HOME‌` Gradle 全局配置和缓存目录
 
-  默认是 `$HOME/.gradle`，可根据自己需要调整位置
+  默认是 `$HOME/.gradle`, 可根据需要调整位置
 
-- `GOPATH` 一般是 `$HOME/go`
+- `GOPATH` 一般是 `$HOME/go`, 可根据需要调整位置
 
 - `GO111MOGULE` 一般是 `on`
 
