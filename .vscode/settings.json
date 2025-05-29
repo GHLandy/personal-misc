@@ -38,7 +38,7 @@
   "update.mode": "none",
   "window.titleBarStyle": "custom",
   "window.zoomLevel": 1.35,
-  "workbench.colorTheme": "Noctis",
+  "workbench.colorTheme": "Noctis Hibernus",
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left"
 }
