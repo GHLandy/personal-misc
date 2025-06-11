@@ -1,13 +1,13 @@
 /**
- * a 标签下载，需要响应头 Content-Type 为 application/octet-stream 才能下载
- * @param {string} url 需要下载的 url
+ * @param {Blob} blob 需要下载得 Blob (通过接口拿到 Blob)
  * @param {string} fileName 下载保存时候的文件名称
  */
-export function achorDownload(url, fileName) {
+export function commonDownload(blob, fileName) {
+  const objURL = window.URL.createObjectURL(blob);
   const achorElement = document.createElement('a');
-
-  achorElement.href = url;
+  achorElement.href = objURL;
   achorElement.setAttribute('download', fileName);
   achorElement.click();
   achorElement.remove();
+  window.URL.revokeObjectURL(objURL);
 }
