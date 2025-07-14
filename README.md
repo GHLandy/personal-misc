@@ -105,7 +105,8 @@ https://github.com/zzzgydi/clash-verge/releases/download/v1.3.8/clash-verge_1.3.
 
 - `GRADLE_USER_HOME‌` Gradle 全局配置和缓存目录
 
-  默认是 `$HOME/.gradle`, 可根据需要调整位置
+  默认是 `$HOME/.gradle`, 可根据需要调整位置，比如 windows 设置为 `D:\.gradle`，Android Studio 中也是默认位置，需要在
+  【Settings】- 【Build, Excecution, Deployment】-【Build Tools】-【Gradle】中选择需要使用目录
 
 - `GOPATH` 一般是 `$HOME/go`, 可根据需要调整位置
 
@@ -132,4 +133,136 @@ windows 配置路径 `%APPDATA%/HBuilder X/user/settings.json`
   "terminal.type": "内置终端",
   "theme-custom.updatetime": "2023-03-23"
 }
+```
+
+prettier.config.js
+
+工具 - 设置 - 插件配置 - 打开文件 prettier.config.js 进行配置
+
+```js
+// Prettier配置文档：https://prettier.io/docs/en/options.html
+module.exports = {
+  printWidth: 120,
+  tabWidth: 2,
+  useTabs: false,
+  semi: true,
+  singleQuote: true,
+  quoteProps: 'as-needed',
+  jsxSingleQuote: false,
+  trailingComma: 'all',
+  bracketSpacing: true,
+  bracketSameLine: false,
+  arrowParens: 'always',
+  proseWrap: 'preserve',
+  htmlWhitespaceSensitivity: 'ignore',
+  vueIndentScriptAndStyle: false,
+  endOfLine: 'lf',
+  embeddedLanguageFormatting: 'auto',
+  singleAttributePerLine: false,
+  //自定义文件后缀对应的parser
+  parsers: {
+    '.nvue': 'vue',
+    '.ux': 'vue',
+    '.uvue': 'vue',
+    '.uts': 'typescript',
+  },
+};
+```
+
+jsbeautifyrc.js
+
+工具 - 设置 - 插件配置 - 打开文件 jsbeautifyrc.js 进行配置
+
+```js
+//配置文档参考：https://www.npmjs.com/package/js-beautify#options
+module.exports = {
+  parsers: {
+    '.js': 'js',
+    '.json': 'js',
+    '.njs': 'js',
+    '.sjs': 'js',
+    '.wxs': 'js',
+    '.css': 'css',
+    '.nss': 'css',
+    '.wxss': 'css',
+    '.acss': 'css',
+    '.ttss': 'css',
+    '.qss': 'css',
+    '.html': 'html',
+    '.ux': 'html',
+    '.wxml': 'html',
+    '.nml': 'html',
+    '.vue': 'html',
+    '.nvue': 'html',
+    '.axml': 'html',
+    '.swan': 'html',
+    '.ttml': 'html',
+    '.qml': 'html',
+    '.md': 'md',
+  },
+  options: {
+    indent_size: 2,
+    indent_char: ' ',
+    indent_with_tabs: false, //使用tab缩进
+    eol: '\n', //行结束符
+    end_with_newline: true, //使用换行结束输出
+    indent_level: 0, //起始代码缩进数
+    editorconfig: true,
+    preserve_newlines: true, //保留空行
+    max_preserve_newlines: 2, //最大连续保留换行符个数。比如设为2，则会将2行以上的空行删除为只保留1行
+    space_in_paren: false, //括弧添加空格 示例 f( a, b )
+    space_in_empty_paren: false, //函数的括弧内没有参数时插入空格 示例 f( )
+    jslint_happy: false, //启用jslint-strict模式
+    space_after_anon_function: true, //匿名函数的括号前加空格
+    space_after_named_function: false,
+    brace_style: 'preserve-inline', //代码样式，可选值 [collapse|expand|end-expand|none][,preserve-inline] [collapse,preserve-inline
+    unindent_chained_methods: false, //不缩进链式方法调用
+    break_chained_methods: false, //在随后的行中断开链式方法调用
+    keep_array_indentation: false, //保持数组缩进
+    unescape_strings: false, //使用xNN符号编码解码可显示的字符
+    wrap_line_length: 120,
+    e4x: false, //支持jsx
+    comma_first: false, //把逗号放在新行开头，而不是结尾
+    operator_position: 'before-newline',
+    unformatted: ['wbr'],
+    html: {
+      'wrap-attributes': 'auto',
+      'wrap-attributes-indent-size': 1,
+      inline: undefined,
+      unformatted: undefined,
+      content_unformatted: undefined,
+      indent_handlebars: true,
+      indent_inner_html: true,
+      'indent-scripts': 'normal', //[keep|separate|normal]
+      extra_liners: [], //配置标签列表，需要在这些标签前面额外加一空白行
+    },
+    css: {
+      'selector-separator-newline': true,
+      'newline-between-rules': false,
+    },
+    typescript: {
+      // "convert_tabs_to_spaces":true,
+      indent_multi_line_object_literal_beginning_on_blank_line: true,
+      insert_space_after_comma_delimiter: true,
+      insert_space_after_constructor: false,
+      insert_space_after_function_keyword_for_anonymous_functions: true,
+      insert_space_after_keywords_in_control_flow_statements: true,
+      insert_space_after_opening_and_before_closing_empty_braces: true,
+      insert_space_after_opening_and_before_closing_jsx_expression_braces: false,
+      insert_space_after_opening_and_before_closing_nonempty_braces: true,
+      insert_space_after_opening_and_before_closing_nonempty_brackets: false,
+      insert_space_after_opening_and_before_closing_nonempty_parenthesis: false,
+      insert_space_after_opening_and_before_closing_template_string_braces: false,
+      insert_space_after_semicolon_in_for_statements: true,
+      insert_space_after_type_assertion: false,
+      insert_space_before_and_after_binary_operators: true,
+      insert_space_before_function_parenthesis: false,
+      insert_space_before_type_annotation: true,
+      place_open_brace_on_new_line_for_control_blocks: false,
+      place_open_brace_on_new_line_for_functions: false,
+      semicolons: 'ignore', // values include "ignore" | "insert" | "remove"
+      trim_trailing_whitespace: true,
+    },
+  },
+};
 ```
