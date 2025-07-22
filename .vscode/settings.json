@@ -32,6 +32,7 @@
   "files.eol": "\n",
   "git.openRepositoryInParentFolders": "never",
   "git.suggestSmartCommit": false,
+  "scm.defaultViewMode": "tree",
   "terminal.integrated.defaultProfile.windows": "Git Bash",
   "terminal.integrated.defaultProfile.linux": "zsh",
   "update.enableWindowsBackgroundUpdates": false,
