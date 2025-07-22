@@ -119,7 +119,7 @@ windows 配置路径 `%APPDATA%/HBuilder X/user/settings.json`
 ```json
 {
   "editor.colorScheme": "Default",
-  "editor.fontSize": 13,
+  "editor.fontSize": 14,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.longLineIndicator": true,
@@ -129,9 +129,7 @@ windows 配置路径 `%APPDATA%/HBuilder X/user/settings.json`
   "editor.tabSize": 2,
   "editor.wordWrap": true,
   "explorer.fontSize": "14",
-  "software.update.settings": "manual",
-  "terminal.type": "内置终端",
-  "theme-custom.updatetime": "2023-03-23"
+  "software.update.settings": "manual"
 }
 ```
 
