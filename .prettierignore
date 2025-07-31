@@ -6,7 +6,8 @@ pnpm-lock.yaml
 .cache
 .husky
 .webpack
-out
+.vite
+out/
 auto-imports.d.ts
 components.d.ts
 **/*iconfont*
