@@ -3,8 +3,10 @@ dist-ssr
 dist-electron
 node_modules
 out
+
 .cache
 .husky/_
+.vite
 .webpack
 
 **/**/.vitepress/cache
@@ -14,6 +16,8 @@ out
 *.zip
 *.7z
 *.local
+*.db*
+*.sqlite3*
 
 # Editor directories and files
 .idea
