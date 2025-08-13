@@ -14,4 +14,12 @@ module.exports = {
   vueIndentScriptAndStyle: false,
   endOfLine: 'lf',
   plugins: ['prettier-plugin-organize-imports', 'prettier-plugin-packagejson'],
+  overrides: [
+    {
+      files: ['.prettierrc'],
+      options: {
+        parser: 'json',
+      },
+    },
+  ],
 };
