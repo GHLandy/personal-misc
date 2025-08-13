@@ -12,6 +12,8 @@ out
 **/**/.vitepress/cache
 **/**/.vitepress/dist
 
+unpackage
+
 *.rar
 *.zip
 *.7z
