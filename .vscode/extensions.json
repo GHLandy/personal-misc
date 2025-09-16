@@ -4,6 +4,7 @@
     "mikestead.dotenv",
     "editorconfig.editorconfig",
     "dbaeumer.vscode-eslint",
+    "vscjava.vscode-java-pack",
     "mhutchie.git-graph",
     "eamodio.gitlens",
     "AhadCove.js-quick-console",
@@ -13,8 +14,10 @@
     "liviuschera.noctis",
     "jebbs.plantuml",
     "esbenp.prettier-vscode",
+    "vmware.vscode-boot-dev-pack",
     "foxundermoon.shell-format",
     "bradlc.vscode-tailwindcss",
+    "uni-helper.uni-helper-vscode",
     "gruntfuggly.todo-tree",
     "Vue.volar"
   ]
