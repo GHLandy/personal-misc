@@ -9,6 +9,11 @@ out
 .vite
 .webpack
 
+**/**/.vitepress/cache
+**/**/.vitepress/dist
+
+unpackage
+
 package-lock.json
 pnpm-lock.yaml
 
