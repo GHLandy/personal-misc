@@ -67,9 +67,10 @@ fi
 if ! command -v ffmpeg &> /dev/null; then
     echo "错误: ffmpeg 未安装"
     echo "请先安装 ffmpeg:"
+    echo "  Windows: 下载 ffmpeg 并添加到 PATH"
+    echo "  CentOS/RHEL: sudo yum install ffmpeg"
     echo "  Ubuntu/Debian: sudo apt install ffmpeg"
     echo "  macOS: brew install ffmpeg"
-    echo "  CentOS/RHEL: sudo yum install ffmpeg"
     exit 1
 fi
 
@@ -82,10 +83,9 @@ if [[ "$DRY_RUN" = false ]]; then
     fi
 fi
 
-# 将时间字符串转换为秒数的函数
+# 将时间字符串转换为秒数的函数（兼容Windows Git Bash）
 time_to_seconds() {
     local time_str="$1"
-    local seconds=0
 
     # 如果时间字符串为空，返回0
     if [[ -z "$time_str" ]]; then
@@ -93,25 +93,42 @@ time_to_seconds() {
         return
     fi
 
-    # 处理 HH:MM:SS.ss 格式
-    if [[ "$time_str" =~ ^([0-9]+):([0-9]+):([0-9.]+)$ ]]; then
-        local hours=${BASH_REMATCH[1]}
-        local minutes=${BASH_REMATCH[2]}
-        local secs=${BASH_REMATCH[3]}
-        seconds=$(echo "$hours * 3600 + $minutes * 60 + $secs" | bc 2> /dev/null || echo "0")
+    # 使用awk进行时间转换
+    awk -F':' '{
+        if (NF == 3) {
+            # HH:MM:SS.ss
+            hours = $1
+            minutes = $2
+            seconds = $3
+            total = hours * 3600 + minutes * 60 + seconds
+            printf "%.3f", total
+        } else if (NF == 2) {
+            # MM:SS.ss
+            minutes = $1
+            seconds = $2
+            total = minutes * 60 + seconds
+            printf "%.3f", total
+        } else if (NF == 1) {
+            # 纯秒数
+            printf "%.3f", $1
+        } else {
+            print "0"
+        }
+    }' <<< "$time_str"
+}
 
-    # 处理 MM:SS.ss 格式
-    elif [[ "$time_str" =~ ^([0-9]+):([0-9.]+)$ ]]; then
-        local minutes=${BASH_REMATCH[1]}
-        local secs=${BASH_REMATCH[2]}
-        seconds=$(echo "$minutes * 60 + $secs" | bc 2> /dev/null || echo "0")
+# 使用awk进行浮点数比较
+compare_floats() {
+    local a="$1"
+    local b="$2"
+    awk -v a="$a" -v b="$b" 'BEGIN {if (a <= b) print 1; else print 0}'
+}
 
-    # 处理纯秒数格式
-    elif [[ "$time_str" =~ ^[0-9.]+$ ]]; then
-        seconds="$time_str"
-    fi
-
-    echo "$seconds"
+# 使用awk进行浮点数减法
+subtract_floats() {
+    local a="$1"
+    local b="$2"
+    awk -v a="$a" -v b="$b" 'BEGIN {printf "%.3f", a - b}'
 }
 
 # 计数器
@@ -170,14 +187,26 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     end_seconds=$(time_to_seconds "$end_time")
 
     # 计算持续时间
-    duration=$(echo "$end_seconds - $start_seconds" | bc 2> /dev/null)
+    duration=$(subtract_floats "$end_seconds" "$start_seconds")
 
     # 验证时间参数
-    if [[ -z "$duration" || $(echo "$duration <= 0" | bc 2> /dev/null) -eq 1 ]]; then
-        echo "[错误] 行 $TOTAL: 时间参数无效"
+    if [[ -z "$duration" ]] || [[ "$duration" = "0.000" ]]; then
+        echo "[错误] 行 $TOTAL: 时间参数无效或持续时间为0"
         echo "  起始时间: $start_time (${start_seconds}秒)"
         echo "  结束时间: $end_time (${end_seconds}秒)"
-        echo "  持续时间必须为正数"
+        echo "  持续时间: ${duration}秒"
+        FAILED=$((FAILED + 1))
+        CLIP_COUNTER=$((CLIP_COUNTER - 1))
+        continue
+    fi
+
+    # 检查持续时间是否为正数
+    is_positive=$(compare_floats "0" "$duration")
+    if [[ "$is_positive" -eq 1 ]]; then
+        echo "[错误] 行 $TOTAL: 持续时间必须为正数"
+        echo "  起始时间: $start_time (${start_seconds}秒)"
+        echo "  结束时间: $end_time (${end_seconds}秒)"
+        echo "  持续时间: ${duration}秒 (应为正数)"
         FAILED=$((FAILED + 1))
         CLIP_COUNTER=$((CLIP_COUNTER - 1))
         continue
@@ -235,7 +264,13 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         if [[ $? -eq 0 ]]; then
             # 检查输出文件是否创建成功
             if [[ -f "$output_file" ]]; then
-                output_size=$(du -h "$output_file" 2> /dev/null | cut -f1 || echo "未知")
+                # Windows兼容的获取文件大小方法
+                if command -v du &> /dev/null; then
+                    output_size=$(du -h "$output_file" 2> /dev/null | cut -f1)
+                else
+                    # Windows下使用其他方法获取文件大小
+                    output_size=$(ls -lh "$output_file" 2> /dev/null | awk '{print $5}' || echo "未知")
+                fi
                 echo "[成功] 输出文件已创建: $output_name (大小: ${output_size})"
                 SUCCESS=$((SUCCESS + 1))
             else
@@ -274,14 +309,24 @@ else
     if [[ $SUCCESS -gt 0 ]]; then
         echo ""
         echo "生成的剪辑文件:"
-        find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | head -20 | while read -r file; do
-            size=$(du -h "$file" 2> /dev/null | cut -f1 || echo "未知")
-            echo "  $(basename "$file") (${size})"
-        done
+        # Windows兼容的文件列表方法
+        if command -v ls &> /dev/null; then
+            find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | head -20 | while read -r file; do
+                if command -v du &> /dev/null; then
+                    size=$(du -h "$file" 2> /dev/null | cut -f1 || echo "未知")
+                else
+                    size=$(ls -lh "$file" 2> /dev/null | awk '{print $5}' || echo "未知")
+                fi
+                echo "  $(basename "$file") (${size})"
+            done
 
-        total_files=$(find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | wc -l)
-        if [[ $total_files -gt 20 ]]; then
-            echo "  ... 还有 $((total_files - 20)) 个文件"
+            total_files=$(find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | wc -l)
+            if [[ $total_files -gt 20 ]]; then
+                echo "  ... 还有 $((total_files - 20)) 个文件"
+            fi
+        else
+            # Windows下简单显示
+            echo "  查看目录: $OUTPUT_DIR"
         fi
     fi
 fi
