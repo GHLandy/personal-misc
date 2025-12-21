@@ -82,6 +82,38 @@ if [[ "$DRY_RUN" = false ]]; then
     fi
 fi
 
+# 将时间字符串转换为秒数的函数
+time_to_seconds() {
+    local time_str="$1"
+    local seconds=0
+
+    # 如果时间字符串为空，返回0
+    if [[ -z "$time_str" ]]; then
+        echo "0"
+        return
+    fi
+
+    # 处理 HH:MM:SS.ss 格式
+    if [[ "$time_str" =~ ^([0-9]+):([0-9]+):([0-9.]+)$ ]]; then
+        local hours=${BASH_REMATCH[1]}
+        local minutes=${BASH_REMATCH[2]}
+        local secs=${BASH_REMATCH[3]}
+        seconds=$(echo "$hours * 3600 + $minutes * 60 + $secs" | bc 2> /dev/null || echo "0")
+
+    # 处理 MM:SS.ss 格式
+    elif [[ "$time_str" =~ ^([0-9]+):([0-9.]+)$ ]]; then
+        local minutes=${BASH_REMATCH[1]}
+        local secs=${BASH_REMATCH[2]}
+        seconds=$(echo "$minutes * 60 + $secs" | bc 2> /dev/null || echo "0")
+
+    # 处理纯秒数格式
+    elif [[ "$time_str" =~ ^[0-9.]+$ ]]; then
+        seconds="$time_str"
+    fi
+
+    echo "$seconds"
+}
+
 # 计数器
 TOTAL=0
 SUCCESS=0
@@ -95,9 +127,6 @@ echo "配置文件: $CONFIG_FILE"
 echo "输出目录: $OUTPUT_DIR"
 echo "=============================================="
 echo ""
-
-# 用于处理文件名冲突
-declare -A FILE_COUNT
 
 # 读取配置文件
 while IFS= read -r line || [[ -n "$line" ]]; do
@@ -136,6 +165,24 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         continue
     fi
 
+    # 计算时间
+    start_seconds=$(time_to_seconds "$start_time")
+    end_seconds=$(time_to_seconds "$end_time")
+
+    # 计算持续时间
+    duration=$(echo "$end_seconds - $start_seconds" | bc 2> /dev/null)
+
+    # 验证时间参数
+    if [[ -z "$duration" || $(echo "$duration <= 0" | bc 2> /dev/null) -eq 1 ]]; then
+        echo "[错误] 行 $TOTAL: 时间参数无效"
+        echo "  起始时间: $start_time (${start_seconds}秒)"
+        echo "  结束时间: $end_time (${end_seconds}秒)"
+        echo "  持续时间必须为正数"
+        FAILED=$((FAILED + 1))
+        CLIP_COUNTER=$((CLIP_COUNTER - 1))
+        continue
+    fi
+
     # 确定输出文件名
     if [[ -z "$output_name" ]]; then
         # 如果没有指定输出文件名，使用输入文件名
@@ -165,40 +212,24 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         echo "[注意] 输出文件已存在，重命名为: $output_name"
     fi
 
-    # 计算时间
-    start_seconds=$(awk -F':' '{
-        if (NF == 3) {print $1 * 3600 + $2 * 60 + $3}
-        else if (NF == 2) {print $1 * 60 + $2}
-        else {print $1}
-    }' <<< "$start_time")
-
-    end_seconds=$(awk -F':' '{
-        if (NF == 3) {print $1 * 3600 + $2 * 60 + $3}
-        else if (NF == 2) {print $1 * 60 + $2}
-        else {print $1}
-    }' <<< "$end_time")
-
-    actual_duration=$(echo "$end_seconds - $start_seconds" | bc 2> /dev/null || echo "N/A")
-
     echo "=============================================="
     echo "处理 [$CLIP_COUNTER]: $(basename "$input_file")"
     echo "输入文件: $input_file"
     echo "起始时间: $start_time (${start_seconds}秒)"
     echo "结束时间: $end_time (${end_seconds}秒)"
-    if [[ "$actual_duration" != "N/A" ]]; then
-        echo "持续时间: ${actual_duration}秒"
-    fi
+    echo "持续时间: ${duration}秒"
     echo "输出文件: $output_name"
 
     if [[ "$DRY_RUN" = true ]]; then
         echo "[试运行] 将执行:"
-        echo "  ffmpeg -i \"$input_file\" -ss $start_time -to $end_time -c:v copy -c:a copy \"$output_file\""
+        echo "  ffmpeg -ss $start_time -i \"$input_file\" -t $duration -c:v copy -c:a copy \"$output_file\""
         SKIPPED=$((SKIPPED + 1))
     else
         echo "正在处理..."
 
         # 执行ffmpeg命令
-        ffmpeg -i "$input_file" -ss "$start_time" -to "$end_time" \
+        # 注意：-ss 在 -i 之前，使用 -t 指定持续时间
+        ffmpeg -ss "$start_time" -i "$input_file" -t "$duration" \
                -c:v copy -c:a copy -y "$output_file" 2>> clip_err.log
 
         if [[ $? -eq 0 ]]; then
@@ -243,9 +274,14 @@ else
     if [[ $SUCCESS -gt 0 ]]; then
         echo ""
         echo "生成的剪辑文件:"
-        ls -lh "$OUTPUT_DIR/" 2> /dev/null | head -20
-        if [[ $(ls -1 "$OUTPUT_DIR/" 2> /dev/null | wc -l) -gt 20 ]]; then
-            echo "... 更多文件"
+        find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | head -20 | while read -r file; do
+            size=$(du -h "$file" 2> /dev/null | cut -f1 || echo "未知")
+            echo "  $(basename "$file") (${size})"
+        done
+
+        total_files=$(find "$OUTPUT_DIR" -maxdepth 1 -type f -name "*.mp4" 2> /dev/null | wc -l)
+        if [[ $total_files -gt 20 ]]; then
+            echo "  ... 还有 $((total_files - 20)) 个文件"
         fi
     fi
 fi
