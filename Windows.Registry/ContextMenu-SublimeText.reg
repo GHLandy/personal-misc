@@ -1,0 +1,8 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\Sublime Text]
+@="通过 Sublime Text 打开"
+"Icon"="D:\\Tools\\Sublime Text\\sublime_text.exe"
+
+[HKEY_CLASSES_ROOT\*\shell\Sublime Text\command]
+@="D:\\Tools\\Sublime Text\\sublime_text.exe \"%1\""
