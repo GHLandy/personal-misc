@@ -10,13 +10,12 @@
     "AhadCove.js-quick-console",
     "yzhang.markdown-all-in-one",
     "PKief.material-icon-theme",
+    "ahmadalli.vscode-nginx-conf",
     "raynigon.nginx-formatter",
     "liviuschera.noctis",
     "esbenp.prettier-vscode",
     "vmware.vscode-boot-dev-pack",
-    "foxundermoon.shell-format",
     "bradlc.vscode-tailwindcss",
-    "uni-helper.uni-helper-vscode",
     "Vue.volar"
   ]
 }
