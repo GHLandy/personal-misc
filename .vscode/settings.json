@@ -32,6 +32,8 @@
   "git.openRepositoryInParentFolders": "never",
   "git.suggestSmartCommit": false,
   "gitlens.ai.enabled": false,
+  "gitlens.integrations.enabled": false,
+  "gitlens.launchpad.indicator.enabled": false,
   "gitlens.plusFeatures.enabled": false,
   "gitlens.showWhatsNewAfterUpgrades": false,
   "scm.defaultViewMode": "tree",
