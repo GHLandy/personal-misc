@@ -12,6 +12,7 @@
   "[typescript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[typescriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[vue]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "chat.agent.enabled": false,
   "diffEditor.renderSideBySide": false,
   "editor.fontFamily": "Menlo, Consolas, DejaVu Sans Mono, monospace",
   "editor.fontSize": 14,
@@ -31,6 +32,9 @@
   "files.eol": "\n",
   "git.openRepositoryInParentFolders": "never",
   "git.suggestSmartCommit": false,
+  "github.copilot.enable": {
+    "*": false
+  },
   "gitlens.ai.enabled": false,
   "gitlens.integrations.enabled": false,
   "gitlens.launchpad.indicator.enabled": false,
