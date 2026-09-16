@@ -1,0 +1,78 @@
+#!/bin/bash
+# $HOME/.bin/time_diff
+
+# 计算两个时间字符串的差值（秒，三位小数）
+time_diff() {
+    awk -v t1="$1" -v t2="$2" '
+    # 解析时间函数
+    function parse_time(t,    parts, n, h, m, s_ms, s, ms) {
+        # 按冒号分割
+        n = split(t, parts, ":")
+
+        if (n == 3) {
+            # 格式: HH:MM:SS[.mmm]
+            h = parts[1] + 0
+            m = parts[2] + 0
+            s_ms = parts[3]
+        } else if (n == 2) {
+            # 格式: MM:SS[.mmm]
+            h = 0
+            m = parts[1] + 0
+            s_ms = parts[2]
+        } else {
+            # 格式: SS[.mmm]（不太可能，但处理一下）
+            h = 0
+            m = 0
+            s_ms = t
+        }
+
+        # 分割秒和毫秒
+        split(s_ms, sec_parts, ".")
+        s = sec_parts[1] + 0
+
+        # 处理毫秒部分
+        if (length(sec_parts) > 1) {
+            ms_str = sec_parts[2]
+            # 补零到3位
+            if (length(ms_str) == 1) ms_str = ms_str "00"      # .5 → 500
+            else if (length(ms_str) == 2) ms_str = ms_str "0"  # .50 → 500
+            else ms_str = substr(ms_str, 1, 3)                  # 超过3位截断
+            ms = ms_str + 0
+        } else {
+            ms = 0
+        }
+
+        return h * 3600 + m * 60 + s + ms / 1000
+    }
+
+    BEGIN {
+        sec1 = parse_time(t1)
+        sec2 = parse_time(t2)
+        diff = sec1 - sec2
+        if (diff < 0) diff = -diff
+        printf "%.3f\n", diff
+    }'
+}
+
+# 主程序
+if [ $# -eq 2 ]; then
+    echo "$(time_diff "$1" "$2")"
+else
+    echo "用法: $0 时间1 时间2"
+    echo ""
+    echo "支持格式:"
+    echo "  MM:SS                    如: 02:30"
+    echo "  HH:MM:SS                 如: 01:02:03"
+    echo "  HH:MM:SS.mmm (1-3位毫秒) 如: 01:02:03.500"
+    echo ""
+    echo "注意:"
+    echo "  .5 .50 .500 .500123 均视为 .500"
+    echo "  .50  视为 .500"
+    echo "  .500 保持 .500"
+    echo "  .500123 截断为 .500"
+    echo ""
+    echo "示例:"
+    echo "  $0 01:02:03.5 01:02:03.50     # 输出: 0.000"
+    echo "  $0 00:01:30.5 00:00:45        # 输出: 45.500"
+    echo "  $0 01:30:00.500 00:45:00.250  # 输出: 2700.250"
+fi

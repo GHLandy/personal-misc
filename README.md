@@ -6,11 +6,11 @@
 
 linux 安装 `fnm`
 
-下载 https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-linux.zip 解压到 `$HOME/.local/fnm/` 下，并添加到 `$PATH`
+下载 https://github.com/Schniz/fnm/releases/download/v1.39.0/fnm-linux.zip 解压到 `$HOME/.local/fnm/` 下，并添加到 `$PATH`
 
 windows 安装 `fnm`
 
-下载 https://github.com/Schniz/fnm/releases/download/v1.38.1/fnm-windows.zip 解压到 `D:\Tools\fnm\`, 将该路径添加到 `PATH`
+下载 https://github.com/Schniz/fnm/releases/download/v1.39.0/fnm-windows.zip 解压到 `D:\Tools\fnm\`, 将该路径添加到 `PATH`
 
 设置 PowerShell 的配置文件
 
