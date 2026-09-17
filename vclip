@@ -8,8 +8,8 @@ usage() {
     echo "选项:"
     echo "  -c, --config FILE  指定配置文件路径 (默认: clip_config.txt)"
     echo "  -o, --output DIR   指定输出目录 (默认: ./output)"
-    echo "  -b, --bitrate      指定重新编码视频的比特率，如 2000k"
     echo "  -d, --dry-run      只显示将要执行的操作，不实际运行"
+    echo "  -b, --bitrate      指定 ffmpeg 的 -b:v 参数 (隐含 -d, --dry-run)"
     echo "  -h, --help         显示此帮助信息"
     echo ""
     echo "配置文件格式:"
@@ -21,9 +21,9 @@ usage() {
 
 # 默认配置
 CONFIG_FILE="clip_config.txt"
-OUTPUT_DIR="./output"
-BIT_RATE=""
+OUTPUT_DIR="output"
 DRY_RUN=false
+BIT_RATE=""
 
 # 解析命令行参数
 while [[ $# -gt 0 ]]; do
@@ -36,13 +36,14 @@ while [[ $# -gt 0 ]]; do
         OUTPUT_DIR="$2"
         shift 2
         ;;
-    -b | --bitrate)
-        BIT_RATE="$2"
-        shift 2
-        ;;
     -d | --dry-run )
         DRY_RUN=true
         shift
+        ;;
+    -b | --bitrate)
+        BIT_RATE="$2"
+        DRY_RUN=true
+        shift 2
         ;;
     -h | --help)
         usage
@@ -128,23 +129,9 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     fi
 
     # 检查输入文件是否存在
-    if [[ ! -f "$input_file" ]]; then
+    if [[ ! -f "$input_file" ]] && [[ "$DRY_RUN" != true ]]; then
         echo "[错误] 行 $TOTAL: 输入文件不存在"
         echo "  输入文件: $input_file"
-        FAILED=$((FAILED + 1))
-        CLIP_COUNTER=$((CLIP_COUNTER - 1))
-        continue
-    fi
-
-    # 计算持续时间
-    duration=$(time_diff "$start_time" "$end_time")
-
-    # 验证时间参数
-    if [[ -z "$duration" ]] || [[ "$duration" == "0.000" ]]; then
-        echo "[错误] 行 $TOTAL: 时间参数无效或持续时间为0"
-        echo "  起始时间: $start_time"
-        echo "  结束时间: $end_time"
-        echo "  持续时间: ${duration}秒"
         FAILED=$((FAILED + 1))
         CLIP_COUNTER=$((CLIP_COUNTER - 1))
         continue
@@ -173,18 +160,23 @@ while IFS= read -r line || [[ -n "$line" ]]; do
     fi
 
     echo "=============================================="
-    echo "处理 [$CLIP_COUNTER]: $(basename "$input_file")"
+    echo "处理 [$CLIP_COUNTER]:"
     echo "输入文件: $input_file"
     echo "起始时间: $start_time"
-    echo "结束时间: $end_time"
-    echo "持续时间: ${duration}秒"
-    echo "输出文件: $output_name"
+    echo "结束时间: ${end_time:-未配置}"
+    echo "输出文件: $output_file"
 
     if [[ "$DRY_RUN" == true ]]; then
-        echo "[试运行] 将执行:"
-        if [[ -z $BIT_RATE ]]; then
+        echo "将执行:"
+        if [[ -z $BIT_RATE ]] && [[ -z $end_time ]]; then
+            echo "  ffmpeg -ss $start_time -i \"$input_file\" -c:v copy -c:a copy \"$output_file\""
+        elif [[ -z $BIT_RATE ]] && [[ -n $end_time ]]; then
+            duration=$(time_diff "$start_time" "$end_time")
             echo "  ffmpeg -ss $start_time -i \"$input_file\" -t $duration -c:v copy -c:a copy \"$output_file\""
+        elif [[ -n $BIT_RATE ]] && [[ -z $end_time ]]; then
+            echo "  ffmpeg -ss $start_time -i \"$input_file\" -c:v libx264 -b:v \"$BIT_RATE\" -c:a copy \"$output_file\""
         else
+            duration=$(time_diff "$start_time" "$end_time")
             echo "  ffmpeg -ss $start_time -i \"$input_file\" -t $duration -c:v libx264 -b:v \"$BIT_RATE\" -c:a copy \"$output_file\""
         fi
         SKIPPED=$((SKIPPED + 1))
@@ -192,15 +184,12 @@ while IFS= read -r line || [[ -n "$line" ]]; do
         echo "正在处理..."
 
         # 执行 ffmpeg 命令
-        # 注意：-ss 在 -i 之前，使用 -t 指定持续时间
-        # 将错误输出重定向到临时文件
         TEMP_ERROR_FILE="ffmpeg_error_$$.log"
-        if [[ -z $BIT_RATE ]]; then
-            ffmpeg -ss "$start_time" -i "$input_file" -t "$duration" \
-                -c:v copy -c:a copy -y "$output_file" 2>"$TEMP_ERROR_FILE"
+        if [[ -z $end_time ]]; then
+            ffmpeg -ss "$start_time" -i "$input_file" -c:v copy -c:a copy -y "$output_file" 2>"$TEMP_ERROR_FILE"
         else
-            ffmpeg -ss "$start_time" -i "$input_file" -t "$duration" \
-                -c:v libx264 -b:v "$BIT_RATE" -c:a copy -y "$OUTPUT_FILE" 2>"$TEMP_ERROR_FILE"
+            duration=$(time_diff "$start_time" "$end_time")
+            ffmpeg -ss "$start_time" -i "$input_file" -t "$duration" -c:v copy -c:a copy -y "$output_file" 2>"$TEMP_ERROR_FILE"
         fi
 
         if [[ $? -eq 0 ]]; then
