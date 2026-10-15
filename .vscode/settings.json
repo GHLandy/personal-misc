@@ -1,5 +1,6 @@
 {
   "[css]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
+  "[go]": { "editor.defaultFormatter": "golang.go" },
   "[html]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascript]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
   "[javascriptreact]": { "editor.defaultFormatter": "esbenp.prettier-vscode" },
@@ -40,6 +41,7 @@
   "gitlens.launchpad.indicator.enabled": false,
   "gitlens.plusFeatures.enabled": false,
   "gitlens.showWhatsNewAfterUpgrades": false,
+  "gopls": { "ui.semanticTokens": true },
   "prettier.printWidth": 100,
   "prettier.tabWidth": 2,
   "prettier.useTabs": false,
